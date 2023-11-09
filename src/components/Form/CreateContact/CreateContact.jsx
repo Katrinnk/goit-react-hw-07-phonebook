@@ -6,7 +6,7 @@ import { selectorContacts } from 'Redux/contacts/selectors';
 
 export const CreateContact = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setNumber] = useState('');
   const [alreadyLoaded, setAlreadyLoaded] = useState(false);
   const contacts = useSelector(selectorContacts);
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export const CreateContact = () => {
       el => el.name.toLowerCase() === name.toLowerCase()
     );
     if (isAlreadyExist) return Notify.failure(`${name} is already in contacts`);
-    dispatch(addNewContact({ name, number }));
+    dispatch(addNewContact({ name, phone }));
     setName('');
     setNumber('');
   };
@@ -68,7 +68,7 @@ export const CreateContact = () => {
           onChange={handleChange}
           className="form-control"
           id="exampleInputTodoDescription"
-          value={number}
+          value={phone}
         />
       </div>
       <button type="submit" className="btn btn-primary ms-3">

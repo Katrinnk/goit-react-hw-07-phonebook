@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectorAppState } from 'Redux/appState/selectors';
+import { selectorAppError } from 'Redux/appState/selectors';
 
 const Error = () => {
-  const { error } = useSelector(selectorAppState);
+  const error = useSelector(selectorAppError);
 
   return error && <h1>{error}</h1>;
 };
