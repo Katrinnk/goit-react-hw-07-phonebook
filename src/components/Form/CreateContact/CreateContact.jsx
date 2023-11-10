@@ -1,22 +1,14 @@
 import { Notify } from 'notiflix';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewContact, getAllContacts } from 'Redux/contacts/operations';
+import { addNewContact } from 'Redux/contacts/operations';
 import { selectorContacts } from 'Redux/contacts/selectors';
 
 export const CreateContact = () => {
   const [name, setName] = useState('');
   const [phone, setNumber] = useState('');
-  const [alreadyLoaded, setAlreadyLoaded] = useState(false);
   const contacts = useSelector(selectorContacts);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!alreadyLoaded) {
-      dispatch(getAllContacts());
-      setAlreadyLoaded(true);
-    }
-  }, [dispatch, alreadyLoaded, contacts]);
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'number') {

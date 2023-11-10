@@ -17,7 +17,7 @@ export const contactsSlice = createSlice({
         state.items.push(payload);
       })
       .addCase(removeContact.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter(el => el.id !== payload);
+        state.items = state.items.filter(el => el.id !== payload.id);
       });
   },
 });
